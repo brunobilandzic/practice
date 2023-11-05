@@ -1,6 +1,6 @@
 import random
 import math
-from tools import fact, get_random
+from tools import fact, get_random, print_enumerable
 
 items_max_length = 20
 max_value = 100
@@ -30,16 +30,23 @@ def generate_items():
 
 def task():
     comb_length = items_length - get_random(items_length)
-    num_combinations = fact(items_length) / (fact(items_length-comb_length)*fact(comb_length))
-    item_used_times = fact(items_length-1)/ (fact(comb_length - 1)*fact((items_length -1) - (comb_length - 1)))
-    
-    print(f"items length: {items_length}\ncombination length: {comb_length}\nnumber of combinations: {num_combinations}\neach item used {item_used_times} times")
+    num_combs = fact(items_length) / (fact(items_length-comb_length)*fact(comb_length))
+    item_used = fact(items_length-1)/ (fact(comb_length - 1)*fact((items_length -1) - (comb_length - 1)))
     
     
+    items_list = generate_items()
     
-     
-
-
+    items = dict()
+    
+    items["comb_length"] = comb_length
+    items["num_combs"] = num_combs
+    items["item_used"] = item_used
+    items["data"] = items_list
+            
+    return items
+    
 
 if __name__ == "__main__":  
-    task()
+    items = task()
+    print(print_enumerable(items["data"]))
+    

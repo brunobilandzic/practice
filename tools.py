@@ -12,5 +12,12 @@ def get_random(max):
     return math.floor(random.random() * max)
 
 
+def print_enumerable(enumerable):
+    for item in enumerable:
+        print(item)
+
 if __name__ == "__main__":
     print(fact(10))
+    
+    
+    
